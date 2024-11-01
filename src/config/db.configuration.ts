@@ -11,6 +11,6 @@ export default (configService: ConfigService): TypeOrmModuleOptions => {
     password: configService.get('db.postgres.password'),
     schema: configService.get('db.postgres.schema'),
     synchronize: configService.get('db.postgres.synchronize'),
-    entities: [],
+    autoLoadEntities: true,
   };
 };

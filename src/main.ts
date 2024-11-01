@@ -2,10 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { VersioningType } from '@nestjs/common';
-import { v4 as UUID4 } from 'uuid';
 import * as compression from 'compression';
 import helmet from 'helmet';
-import { doubleCsrf } from 'csrf-csrf';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
@@ -32,10 +30,6 @@ async function bootstrap() {
       optionsSuccessStatus: 204,
     });
   }
-
-  // https://github.com/Psifi-Solutions/csrf-csrf?tab=readme-ov-file#configuration
-  const { doubleCsrfProtection } = doubleCsrf({ getSecret: () => UUID4() });
-  app.use(doubleCsrfProtection);
 
   const config = new DocumentBuilder()
     .setTitle('Bookit')
