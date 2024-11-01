@@ -10,6 +10,12 @@ import eventConfiguration from './config/event.configuration';
 import { HttpModule } from '@nestjs/axios';
 import httpConfiguration from './config/http.configuration';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { UserModule } from './user/user.module';
+import { AppointmentModule } from './appointment/appointment.module';
+import { PatientQueueModule } from './patient-queue/patient-queue.module';
+import { NotificationModule } from './notification/notification.module';
+import { FeedbackModule } from './feedback/feedback.module';
+import { HostpitalModule } from './hostpital/hostpital.module';
 import throttleConfiguration from './config/throttle.configuration';
 
 @Module({
@@ -39,6 +45,12 @@ import throttleConfiguration from './config/throttle.configuration';
       inject: [ConfigService],
     }),
     ThrottlerModule.forRoot(throttleConfiguration()),
+    UserModule,
+    AppointmentModule,
+    PatientQueueModule,
+    NotificationModule,
+    FeedbackModule,
+    HostpitalModule,
   ],
   controllers: [AppController],
   providers: [AppService],
