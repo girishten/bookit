@@ -1,9 +1,9 @@
 /**
  * different type of users in the system
  */
-export type UserRole =
+export type UserRoleEnum =
   | 'Doctor'
   | 'Patient'
-  | 'Hospital-Admin'
-  | 'Tool-Admin'
-  | 'Administrator';
+  | 'HospitalAdmin'
+  | 'ToolAdmin'
+  | 'SuperAdmin';

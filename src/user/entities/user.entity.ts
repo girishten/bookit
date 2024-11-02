@@ -1,5 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { UserRole } from '../models/constants';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { UserRole } from './role.entity';
 
 @Entity()
 export class User {
@@ -30,18 +36,23 @@ export class User {
   @Column('text')
   password: string;
 
-  @Column('text')
-  role: UserRole[];
+  @ManyToMany(() => UserRole)
+  @JoinTable()
+  roles: UserRole[];
 
-  @Column('date')
+  @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
   @Column('text')
   createdBy: string;
 
-  @Column('date')
+  @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
   @Column('text')
   updatedBy: string;
+
+  equals(user: User) {
+    return this.id === user.id;
+  }
 }

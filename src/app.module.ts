@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import envConfiguration from './config/env.configuration';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -52,7 +50,7 @@ import throttleConfiguration from './config/throttle.configuration';
     FeedbackModule,
     HostpitalModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
